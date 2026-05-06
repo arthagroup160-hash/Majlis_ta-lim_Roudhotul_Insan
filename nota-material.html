@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nota Material — Majelis Taklim Raudhotul Insan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--bg2:#111;--bg3:#181818;--bg4:#1f1f1f;--bg5:#252525;
+  --red:#c0392b;--red2:#e74c3c;--red3:#ff6b6b;
+  --grn:#27ae60;--grn2:#2ecc71;
+  --gold:#f39c12;--gold2:#f1c40f;
+  --txt:#e8e8e8;--txt2:#b0b0b0;--txt3:#606060;
+  --bdr:#252525;--bdr2:#333;
+}
+@keyframes shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--txt);min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--grn);border-radius:2px}
+.topbar{background:var(--bg2);border-bottom:2px solid var(--grn);height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:sticky;top:0;z-index:999}
+.tb-l{display:flex;align-items:center;gap:12px}
+.tb-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--grn),var(--grn2));border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff}
+.tb-name{font-size:11.5px;font-weight:700;color:var(--txt);line-height:1.3}
+.tb-sub{font-size:9px;color:var(--txt3);text-transform:uppercase;letter-spacing:.06em}
+.tb-r{display:flex;gap:6px}
+.tb-btn{padding:6px 14px;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:3px;text-decoration:none;transition:.2s;border:1px solid;cursor:pointer;font-family:'Inter',sans-serif}
+.tb-out{background:transparent;color:var(--txt3);border-color:var(--bdr2)}
+.tb-out:hover{border-color:var(--grn);color:var(--grn2)}
+.tb-red{background:var(--red);color:#fff;border-color:var(--red2)}
+section{padding:24px 20px}
+.si{max-width:960px;margin:0 auto}
+.str{display:flex;align-items:center;gap:8px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--bdr)}
+.si-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.si-dot-g{background:var(--grn)}.si-dot-r{background:var(--red)}.si-dot-gold{background:var(--gold)}
+.si-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2)}
+.si-sub{font-size:10px;color:var(--txt3);margin-left:auto}
+.btn{padding:9px 22px;font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;text-decoration:none;display:inline-block;transition:.2s;border:1px solid;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-grn{background:var(--grn);color:#fff;border-color:var(--grn2)}
+.btn-grn:hover{background:var(--grn2)}
+.btn-ghost{background:transparent;border-color:var(--bdr2);color:var(--txt3)}
+.btn-ghost:hover{border-color:var(--grn);color:var(--grn2)}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red2)}
+.fsec{background:var(--bg3);border:1px solid var(--bdr);padding:20px;margin-bottom:16px}
+.fsec-t{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt);margin-bottom:4px}
+.fsec-s{font-size:12px;color:var(--txt3);margin-bottom:16px}
+.fg-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.fg-g{grid-template-columns:1fr}}
+.fg-f{grid-column:1/-1}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fg label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3)}
+.fg input,.fg select,.fg textarea{background:var(--bg4);border:1px solid var(--bdr2);color:var(--txt);padding:8px 11px;font-family:'Inter',sans-serif;font-size:12.5px;outline:none;transition:.18s;border-radius:2px;width:100%}
+.fg input:focus,.fg select:focus{border-color:var(--grn);background:var(--bg5)}
+.fg select option{background:var(--bg3)}
+/* NOTA CARD */
+.nota-card{background:var(--bg3);border:1px solid var(--bdr);border-top:3px solid var(--grn);margin-bottom:12px;overflow:hidden}
+.nota-head{background:var(--bg4);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--bdr)}
+.nota-id{font-size:12px;font-weight:800;color:var(--grn2)}
+.nota-tgl{font-size:10px;color:var(--txt3)}
+.nota-body{padding:14px 16px}
+.nota-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.ni-l{font-size:9px;color:var(--txt3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.ni-v{font-size:12.5px;font-weight:600;color:var(--txt)}
+.nota-tbl{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:12px}
+.nota-tbl thead tr{background:var(--bg5);border-bottom:1px solid var(--bdr2)}
+.nota-tbl thead th{padding:7px 10px;text-align:left;font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3)}
+.nota-tbl tbody tr{border-bottom:1px solid var(--bdr)}
+.nota-tbl tbody td{padding:7px 10px;color:var(--txt2)}
+.nota-tbl tfoot tr{background:var(--bg4);border-top:2px solid var(--bdr2)}
+.nota-tbl tfoot td{padding:8px 10px;font-weight:700;font-size:12px}
+.nota-foot{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--bdr);flex-wrap:wrap;gap:8px}
+.nota-total{font-size:14px;font-weight:800;color:var(--gold)}
+.nota-total span{font-size:10px;font-weight:400;color:var(--txt3);display:block}
+.tw{background:var(--bg3);border:1px solid var(--bdr);overflow:hidden}
+.th{background:var(--bg4);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bdr)}
+.th-t{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt2)}
+.bdg{display:inline-block;padding:2px 7px;border-radius:2px;font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.bb{background:rgba(243,156,18,.12);color:var(--gold);border:1px solid rgba(243,156,18,.2)}
+.mo{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.87);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:.22s}
+.mo.open{opacity:1;pointer-events:all}
+.md{background:var(--bg2);border:1px solid var(--bdr2);box-shadow:0 20px 60px rgba(0,0,0,.7);max-width:560px;width:100%;max-height:90vh;overflow-y:auto}
+.md-body{padding:24px}
+.md-t{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--bdr)}
+.items-wrap{margin-bottom:14px}
+.item-row{display:grid;grid-template-columns:1fr 80px 80px auto;gap:6px;align-items:end;margin-bottom:8px}
+@media(max-width:480px){.item-row{grid-template-columns:1fr 1fr}}
+.del-btn{background:transparent;border:1px solid rgba(192,57,43,.3);color:var(--red2);padding:6px 8px;font-size:10px;cursor:pointer;border-radius:2px;font-family:'Inter',sans-serif;height:34px}
+.del-btn:hover{background:var(--red);color:#fff}
+footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:18px 20px;text-align:center}
+.ft-a{font-size:11px;color:var(--txt3);line-height:1.9}
+.empty-state{text-align:center;padding:40px 20px;color:var(--txt3)}
+.es-i{font-size:32px;margin-bottom:10px;display:block}
+.es-t{font-size:13px;font-weight:600;color:var(--txt2);margin-bottom:4px}
+.es-s{font-size:11px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-l">
+    <div class="tb-logo">📦</div>
+    <div>
+      <div class="tb-name">Nota Material</div>
+      <div class="tb-sub">Majelis Taklim Raudhotul Insan</div>
+    </div>
+  </div>
+  <div class="tb-r">
+    <a href="kasir.html" class="tb-btn tb-red">🖥️ Kasir</a>
+    <a href="index.html" class="tb-btn tb-out">🏠 Beranda</a>
+  </div>
+</div>
+
+<!-- TOMBOL TAMBAH -->
+<section style="background:var(--bg2);border-bottom:1px solid var(--bdr);padding:16px 20px">
+  <div class="si" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+    <div>
+      <div style="font-size:13px;font-weight:700;color:var(--txt)">Daftar Nota Penerimaan Material</div>
+      <div style="font-size:11px;color:var(--txt3);margin-top:2px">Semua donasi barang & material tercatat di sini</div>
+    </div>
+    <button class="btn btn-grn" onclick="openMo('buat')">+ Buat Nota Baru</button>
+  </div>
+</section>
+
+<!-- LIST NOTA -->
+<section style="background:var(--bg)">
+  <div class="si">
+    <div id="notaList"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-a">Nota Material — Majelis Taklim Raudhotul Insan<br>WA: 083871666136 · Bank BJB · 0160405831100 · a.n Hudri</div>
+</footer>
+
+<!-- MODAL BUAT NOTA -->
+<div class="mo" id="mo-buat">
+  <div class="md">
+    <div class="md-body">
+      <div class="md-t">Buat Nota Material Baru</div>
+      <div class="fg-g" style="margin-bottom:12px">
+        <div class="fg">
+          <label>No. Nota</label>
+          <input type="text" id="n-id" placeholder="Contoh: NOTA-002">
+        </div>
+        <div class="fg">
+          <label>Tanggal</label>
+          <input type="date" id="n-tgl">
+        </div>
+        <div class="fg fg-f">
+          <label>Nama Donatur / Toko</label>
+          <input type="text" id="n-don" placeholder="Nama donatur atau toko">
+        </div>
+        <div class="fg fg-f">
+          <label>Keterangan Nota</label>
+          <input type="text" id="n-ket" placeholder="Contoh: Penerimaan material tahap 2">
+        </div>
+      </div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:8px">Daftar Item Material</div>
+      <div id="items-wrap" class="items-wrap"></div>
+      <button class="btn btn-ghost" style="width:100%;margin-bottom:14px;padding:8px" onclick="addItem()">+ Tambah Item</button>
+      <div class="fg" style="margin-bottom:14px">
+        <label>Estimasi Total Nilai (Rp)</label>
+        <input type="number" id="n-total" placeholder="Nilai perkiraan total material">
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost" style="flex:1" onclick="closeMo('buat')">Batal</button>
+        <button class="btn btn-grn" style="flex:1" onclick="simpanNota()">Simpan Nota</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DETAIL -->
+<div class="mo" id="mo-detail">
+  <div class="md">
+    <div class="md-body" id="detail-body"></div>
+  </div>
+</div>
+
+<script>
+var SK='ri_transaksi_v1';
+var itemCount=0;
+
+var DA=[{
+  id:'NOTA-001',tgl:'2026-05-03',
+  ket:'Nota Penerimaan Material #001 — 15 item bahan bangunan',
+  jenis:'masuk-barang',nominal:10380000,
+  donatur:'— (belum diisi)',toko:'— (belum diisi)',
+  catatan:'Nota pertama penerimaan material pembangunan gedung',
+  items:[
+    {nm:'Hebel / Bata Ringan',qty:'6',sat:'Kodi',ket:'Dinding majelis'},
+    {nm:'Besi Beton 10mm',qty:'45',sat:'Batang',ket:'Kolom / sloof'},
+    {nm:'Semen (50 kg)',qty:'20',sat:'Sak',ket:'Adukan / plester'},
+    {nm:'Pasir Bangunan',qty:'1',sat:'Engkel',ket:'Adukan / urug'},
+    {nm:'MU / Perekat Hebel',qty:'6',sat:'Sak',ket:'Pasang bata ringan'},
+    {nm:'Cincin / Begel 6x10',qty:'100',sat:'Bh',ket:'Begel kolom'},
+    {nm:'Cincin / Begel 8x12',qty:'100',sat:'Bh',ket:'Begel balok'},
+    {nm:'Papan Bekisting 2in',qty:'10',sat:'Lbr',ket:'Cetakan beton'},
+    {nm:'Kawat Beton',qty:'2.5',sat:'Kg',ket:'Ikat besi'},
+    {nm:'Paku 7 cm',qty:'2.5',sat:'Kg',ket:'Bekisting'},
+    {nm:'Paku 10 cm',qty:'2.5',sat:'Kg',ket:'Bekisting'},
+    {nm:'Paku 12 cm',qty:'2.5',sat:'Kg',ket:'Bekisting'},
+    {nm:'Paku 4 cm',qty:'11.5',sat:'Kg',ket:'Kayu tipis'},
+    {nm:'Benang Bangunan',qty:'3',sat:'Gulung',ket:'Marking'},
+    {nm:'Ember Cor',qty:'35',sat:'Buah',ket:'Angkut beton'}
+  ]
+}];
+
+function ld(){
+  try{var r=localStorage.getItem(SK);if(r)return JSON.parse(r);}catch(e){}
+  localStorage.setItem(SK,JSON.stringify(DA));return DA;
+}
+function sd(d){localStorage.setItem(SK,JSON.stringify(d));}
+var data=ld();
+var fmt=function(n){return new Intl.NumberFormat('id-ID').format(Math.round(n||0));};
+var rp=function(n){return 'Rp '+fmt(n);};
+
+function renderNotas(){
+  var list=document.getElementById('notaList');
+  var notas=data.filter(function(t){return t.jenis==='masuk-barang';});
+  if(!notas.length){
+    list.innerHTML='<div class="empty-state"><span class="es-i">📦</span><div class="es-t">Belum ada nota material</div><div class="es-s">Klik "Buat Nota Baru" untuk menambahkan</div></div>';
+    return;
+  }
+  list.innerHTML=notas.map(function(n){
+    var items=n.items||[];
+    var itemRows=items.map(function(it,i){
+      return '<tr><td style="color:var(--txt3)">'+(i+1)+'</td><td>'+it.nm+'</td><td>'+it.qty+'</td><td>'+it.sat+'</td><td style="color:var(--txt3)">'+it.ket+'</td></tr>';
+    }).join('');
+    return '<div class="nota-card">'
+      +'<div class="nota-head">'
+        +'<div><div class="nota-id">'+n.id+'</div><div class="nota-tgl">'+n.tgl+'</div></div>'
+        +'<div style="display:flex;gap:6px">'
+          +'<button class="btn btn-ghost" style="padding:5px 12px;font-size:9px" onclick="lihatDetail(\''+n.id+'\')">Lihat Detail</button>'
+          +'<span class="bdg bb">Material</span>'
+        +'</div>'
+      +'</div>'
+      +'<div class="nota-body">'
+        +'<div class="nota-info">'
+          +'<div><div class="ni-l">Donatur / Toko</div><div class="ni-v">'+(n.donatur||'—')+'</div></div>'
+          +'<div><div class="ni-l">Keterangan</div><div class="ni-v">'+n.ket+'</div></div>'
+          +'<div><div class="ni-l">Jumlah Item</div><div class="ni-v">'+items.length+' item</div></div>'
+          +'<div><div class="ni-l">Estimasi Nilai</div><div class="ni-v" style="color:var(--gold)">'+rp(n.nominal)+'</div></div>'
+        +'</div>'
+        +(items.length?'<div style="overflow-x:auto"><table class="nota-tbl"><thead><tr><th>#</th><th>Nama Material</th><th>Qty</th><th>Sat</th><th>Ket</th></tr></thead><tbody>'+itemRows+'</tbody></table></div>':'')
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function lihatDetail(id){
+  var n=data.find(function(t){return t.id===id;});
+  if(!n)return;
+  var items=n.items||[];
+  var rows=items.map(function(it,i){
+    return '<tr><td style="padding:7px 10px;border-bottom:1px solid var(--bdr);color:var(--txt3)">'+(i+1)+'</td>'
+      +'<td style="padding:7px 10px;border-bottom:1px solid var(--bdr)">'+it.nm+'</td>'
+      +'<td style="padding:7px 10px;border-bottom:1px solid var(--bdr);text-align:center">'+it.qty+'</td>'
+      +'<td style="padding:7px 10px;border-bottom:1px solid var(--bdr)">'+it.sat+'</td>'
+      +'<td style="padding:7px 10px;border-bottom:1px solid var(--bdr);color:var(--txt3)">'+it.ket+'</td></tr>';
+  }).join('');
+  document.getElementById('detail-body').innerHTML=''
+    +'<div class="md-t">Detail Nota — '+n.id+'</div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;font-size:12px">'
+      +'<div><div style="font-size:9px;color:var(--txt3);text-transform:uppercase;margin-bottom:2px">Tanggal</div><div style="font-weight:600">'+n.tgl+'</div></div>'
+      +'<div><div style="font-size:9px;color:var(--txt3);text-transform:uppercase;margin-bottom:2px">Donatur/Toko</div><div style="font-weight:600">'+(n.donatur||'—')+'</div></div>'
+      +'<div style="grid-column:1/-1"><div style="font-size:9px;color:var(--txt3);text-transform:uppercase;margin-bottom:2px">Keterangan</div><div style="font-weight:600">'+n.ket+'</div></div>'
+    +'</div>'
+    +(items.length?'<div style="overflow-x:auto;margin-bottom:16px"><table style="width:100%;border-collapse:collapse;font-size:11.5px">'
+      +'<thead><tr style="background:var(--bg5);border-bottom:1px solid var(--bdr2)"><th style="padding:7px 10px;text-align:left;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3)">#</th><th style="padding:7px 10px;text-align:left;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3)">Nama Material</th><th style="padding:7px 10px;text-align:center;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3)">Qty</th><th style="padding:7px 10px;text-align:left;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3)">Sat</th><th style="padding:7px 10px;text-align:left;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3)">Ket</th></tr></thead>'
+      +'<tbody>'+rows+'</tbody>'
+      +'<tfoot><tr style="background:var(--bg4);border-top:2px solid var(--bdr2)"><td colspan="4" style="padding:8px 10px;font-weight:700;font-size:12px;color:var(--txt2)">Total '+items.length+' item — Estimasi Nilai</td><td style="padding:8px 10px;font-weight:800;font-size:13px;color:var(--gold)">'+rp(n.nominal)+'</td></tr></tfoot>'
+      +'</table></div>':'')
+    +'<button class="btn btn-ghost" style="width:100%" onclick="closeMo(\'detail\')">Tutup</button>';
+  openMo('detail');
+}
+
+function addItem(){
+  var wrap=document.getElementById('items-wrap');
+  var id='item-'+itemCount++;
+  var row=document.createElement('div');
+  row.className='item-row';
+  row.id=id;
+  row.innerHTML=''
+    +'<div class="fg"><label>Nama Material</label><input type="text" class="i-nm" placeholder="Contoh: Semen Portland"></div>'
+    +'<div class="fg"><label>Qty</label><input type="text" class="i-qty" placeholder="10"></div>'
+    +'<div class="fg"><label>Satuan</label><input type="text" class="i-sat" placeholder="Sak"></div>'
+    +'<div class="fg"><label>&nbsp;</label><button class="del-btn" onclick="removeItem(\''+id+'\')">✕</button></div>';
+  wrap.appendChild(row);
+}
+function removeItem(id){var el=document.getElementById(id);if(el)el.remove();}
+
+function simpanNota(){
+  var nid=document.getElementById('n-id').value.trim()||('NOTA-'+Date.now());
+  var tgl=document.getElementById('n-tgl').value||new Date().toISOString().split('T')[0];
+  var don=document.getElementById('n-don').value.trim()||'—';
+  var ket=document.getElementById('n-ket').value.trim()||'Nota Penerimaan Material';
+  var total=parseFloat(document.getElementById('n-total').value)||0;
+  var items=[];
+  document.querySelectorAll('#items-wrap .item-row').forEach(function(row){
+    var nm=row.querySelector('.i-nm').value.trim();
+    var qty=row.querySelector('.i-qty').value.trim();
+    var sat=row.querySelector('.i-sat').value.trim();
+    if(nm)items.push({nm:nm,qty:qty||'1',sat:sat||'unit',ket:''});
+  });
+  var entry={id:nid,tgl:tgl,ket:ket,jenis:'masuk-barang',nominal:total,donatur:don,items:items};
+  data.push(entry);
+  sd(data);
+  closeMo('buat');
+  resetNota();
+  renderNotas();
+}
+function resetNota(){
+  ['n-id','n-tgl','n-don','n-ket','n-total'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('items-wrap').innerHTML='';
+  itemCount=0;
+}
+
+function openMo(id){document.getElementById('mo-'+id).classList.add('open');}
+function closeMo(id){document.getElementById('mo-'+id).classList.remove('open');}
+document.querySelectorAll('.mo').forEach(function(el){el.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+
+window.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('n-tgl').value=new Date().toISOString().split('T')[0];
+  renderNotas();
+  addItem();
+});
+window.addEventListener('storage',function(e){if(e.key===SK){data=ld();renderNotas();}});
+</script>
+</body>
+</html>
