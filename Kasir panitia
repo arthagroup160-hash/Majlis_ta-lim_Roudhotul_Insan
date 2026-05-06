@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasir Panitia — Majelis Taklim Raudhotul Insan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--bg2:#111;--bg3:#181818;--bg4:#1f1f1f;--bg5:#252525;
+  --red:#c0392b;--red2:#e74c3c;--red3:#ff6b6b;
+  --grn:#27ae60;--grn2:#2ecc71;
+  --gold:#f39c12;--gold2:#f1c40f;
+  --txt:#e8e8e8;--txt2:#b0b0b0;--txt3:#606060;
+  --bdr:#252525;--bdr2:#333;
+}
+@keyframes shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--txt);min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+.topbar{background:var(--bg2);border-bottom:2px solid var(--red);height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:sticky;top:0;z-index:999}
+.tb-l{display:flex;align-items:center;gap:12px}
+.tb-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--red),var(--red2));border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff}
+.tb-name{font-size:11.5px;font-weight:700;color:var(--txt);line-height:1.3}
+.tb-sub{font-size:9px;color:var(--txt3);text-transform:uppercase;letter-spacing:.06em}
+.tb-r{display:flex;gap:6px}
+.tb-btn{padding:6px 14px;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:3px;text-decoration:none;transition:.2s;border:1px solid;cursor:pointer;font-family:'Inter',sans-serif}
+.tb-out{background:transparent;color:var(--txt3);border-color:var(--bdr2)}
+.tb-out:hover{border-color:var(--red);color:var(--red2)}
+.tb-grn{background:var(--grn);color:#fff;border-color:var(--grn2)}
+section{padding:24px 20px}
+.si{max-width:960px;margin:0 auto}
+.str{display:flex;align-items:center;gap:8px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--bdr)}
+.si-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.si-dot-r{background:var(--red)}.si-dot-g{background:var(--grn)}.si-dot-gold{background:var(--gold)}
+.si-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2)}
+.si-sub{font-size:10px;color:var(--txt3);margin-left:auto}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-bottom:20px}
+.sc{background:var(--bg3);border:1px solid var(--bdr);padding:14px;border-left:3px solid}
+.sc-u{border-left-color:var(--grn)}.sc-b{border-left-color:var(--gold)}.sc-k{border-left-color:var(--red)}.sc-s{border-left-color:var(--txt3)}
+.sc-l{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.sc-u .sc-l{color:var(--grn2)}.sc-b .sc-l{color:var(--gold)}.sc-k .sc-l{color:var(--red2)}.sc-s .sc-l{color:var(--txt3)}
+.sc-v{font-size:16px;font-weight:800}
+.sc-u .sc-v{color:var(--grn2)}.sc-b .sc-v{color:var(--gold)}.sc-k .sc-v{color:var(--red2)}.sc-s .sc-v{color:var(--txt)}
+.sc-c{font-size:10px;color:var(--txt3);margin-top:2px}
+.prog-wrap{background:var(--bg3);border:1px solid var(--bdr);padding:14px 16px;margin-bottom:20px}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.prog-lbl{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3)}
+.prog-pct{font-size:20px;font-weight:800;color:var(--red2)}
+.prog-bg{height:8px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-bottom:4px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--red2),var(--red3));background-size:300%;animation:shimmer 3s linear infinite;transition:width 1.2s ease}
+.prog-tgt{font-size:10px;color:var(--txt3);text-align:right}
+.fsec{background:var(--bg3);border:1px solid var(--bdr);padding:20px;margin-bottom:16px}
+.fsec-t{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt);margin-bottom:4px}
+.fsec-s{font-size:12px;color:var(--txt3);margin-bottom:16px}
+.fg-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.fg-g{grid-template-columns:1fr}}
+.fg-f{grid-column:1/-1}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fg label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3)}
+.fg input,.fg select,.fg textarea{background:var(--bg4);border:1px solid var(--bdr2);color:var(--txt);padding:8px 11px;font-family:'Inter',sans-serif;font-size:12.5px;outline:none;transition:.18s;border-radius:2px;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--red);background:var(--bg5)}
+.fg select option{background:var(--bg3)}
+.btn{padding:9px 22px;font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;text-decoration:none;display:inline-block;transition:.2s;border:1px solid;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red2)}
+.btn-red:hover{background:var(--red2)}
+.btn-grn{background:var(--grn);color:#fff;border-color:var(--grn2)}
+.btn-ghost{background:transparent;border-color:var(--bdr2);color:var(--txt3)}
+.btn-ghost:hover{border-color:var(--red);color:var(--red2)}
+.tw{background:var(--bg3);border:1px solid var(--bdr);overflow:hidden}
+.th{background:var(--bg4);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bdr);flex-wrap:wrap;gap:8px}
+.th-t{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt2)}
+.ttabs{display:flex;gap:2px}
+.ttab{background:var(--bg5);border:1px solid var(--bdr2);color:var(--txt3);padding:5px 10px;font-size:8.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:.15s;font-family:'Inter',sans-serif}
+.ttab.act,.ttab:hover{background:var(--red);color:#fff;border-color:var(--red)}
+table.dt{width:100%;border-collapse:collapse;font-size:12px}
+table.dt thead{border-bottom:2px solid var(--red)}
+table.dt thead th{padding:8px 12px;font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);text-align:left;white-space:nowrap;background:var(--bg4)}
+table.dt tbody tr{border-bottom:1px solid var(--bdr);transition:.12s}
+table.dt tbody tr:hover{background:var(--bg4)}
+table.dt tbody td{padding:9px 12px;color:var(--txt);vertical-align:middle}
+.tov{overflow-x:auto}
+.bdg{display:inline-block;padding:2px 7px;border-radius:2px;font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.bu{background:rgba(39,174,96,.14);color:var(--grn2);border:1px solid rgba(39,174,96,.22)}
+.bb{background:rgba(243,156,18,.12);color:var(--gold);border:1px solid rgba(243,156,18,.2)}
+.bk{background:rgba(192,57,43,.14);color:var(--red2);border:1px solid rgba(192,57,43,.22)}
+.tbl-foot{background:var(--bg4)!important;border-top:2px solid var(--bdr2)!important}
+.tbl-foot td{font-weight:700;font-size:11px}
+.tc{text-align:center}.tr{text-align:right}
+.cg{color:var(--grn2)!important;font-weight:700}
+.cr{color:var(--red2)!important;font-weight:700}
+.cgold{color:var(--gold)!important;font-weight:700}
+.mo{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.87);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:.22s}
+.mo.open{opacity:1;pointer-events:all}
+.md{background:var(--bg2);border:1px solid var(--bdr2);box-shadow:0 20px 60px rgba(0,0,0,.7);max-width:420px;width:100%}
+.md-body{padding:28px;text-align:center}
+.md-icon{font-size:38px;margin-bottom:10px;display:block}
+.md-t{font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
+.md-s{font-size:12px;color:var(--txt2);line-height:1.8}
+footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:18px 20px;text-align:center}
+.ft-a{font-size:11px;color:var(--txt3);line-height:1.9}
+.del-btn{background:transparent;border:1px solid rgba(192,57,43,.3);color:var(--red2);padding:3px 8px;font-size:9px;cursor:pointer;border-radius:2px;font-family:'Inter',sans-serif}
+.del-btn:hover{background:var(--red);color:#fff}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-l">
+    <div class="tb-logo">RI</div>
+    <div>
+      <div class="tb-name">Kasir Panitia</div>
+      <div class="tb-sub">Majelis Taklim Raudhotul Insan</div>
+    </div>
+  </div>
+  <div class="tb-r">
+    <a href="nota-material.html" class="tb-btn tb-grn">📦 Nota</a>
+    <a href="index.html" class="tb-btn tb-out">🏠 Beranda</a>
+  </div>
+</div>
+
+<!-- RINGKASAN -->
+<section style="background:var(--bg2);border-bottom:1px solid var(--bdr)">
+  <div class="si">
+    <div class="str"><div class="si-dot si-dot-r"></div><div class="si-title">Ringkasan Kas</div><div class="si-sub" id="tgl-now"></div></div>
+    <div class="prog-wrap">
+      <div class="prog-row"><div class="prog-lbl">Progress Dana</div><div class="prog-pct" id="pPct">0%</div></div>
+      <div class="prog-bg"><div class="prog-fill" id="pBar" style="width:0%"></div></div>
+      <div class="prog-tgt">Target: <b style="color:var(--txt2)">Rp 162.690.000</b></div>
+    </div>
+    <div class="sum">
+      <div class="sc sc-u"><div class="sc-l">Donasi Uang</div><div class="sc-v" id="sU">Rp 0</div><div class="sc-c" id="sCU">0 transaksi</div></div>
+      <div class="sc sc-b"><div class="sc-l">Nilai Material</div><div class="sc-v" id="sB">Rp 0</div><div class="sc-c" id="sCB">0 nota</div></div>
+      <div class="sc sc-k"><div class="sc-l">Total Keluar</div><div class="sc-v" id="sK">Rp 0</div><div class="sc-c" id="sCK">0 item</div></div>
+      <div class="sc sc-s"><div class="sc-l">Saldo Kas</div><div class="sc-v" id="sS">Rp 0</div><div class="sc-c">uang masuk - keluar</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM INPUT -->
+<section style="background:var(--bg);border-bottom:1px solid var(--bdr)">
+  <div class="si">
+    <div class="str"><div class="si-dot si-dot-g"></div><div class="si-title">Input Transaksi Baru</div></div>
+    <div class="fsec">
+      <div class="fsec-t">Catat Pemasukan / Pengeluaran</div>
+      <div class="fsec-s">Isi form berikut untuk mencatat transaksi. Data tersimpan di browser ini.</div>
+      <div class="fg-g">
+        <div class="fg">
+          <label>Jenis Transaksi *</label>
+          <select id="f-jenis" onchange="tglFJ()">
+            <option value="">-- Pilih --</option>
+            <option value="masuk-uang">💰 Donasi Uang Masuk</option>
+            <option value="masuk-barang">📦 Donasi Material / Barang</option>
+            <option value="keluar">💸 Pengeluaran / Biaya</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Tanggal *</label>
+          <input type="date" id="f-tgl">
+        </div>
+        <div class="fg">
+          <label>Nama Donatur / Pihak</label>
+          <input type="text" id="f-nama" placeholder="Nama lengkap atau Hamba Allah">
+        </div>
+        <div class="fg">
+          <label>Asal / Keterangan Pihak</label>
+          <input type="text" id="f-asal" placeholder="Kota, grup WA, dsb">
+        </div>
+        <div class="fg" id="fw-nom">
+          <label>Nominal (Rp) *</label>
+          <input type="number" id="f-nom" placeholder="Contoh: 100000">
+        </div>
+        <div class="fg" id="fw-mat" style="display:none">
+          <label>Deskripsi Material *</label>
+          <input type="text" id="f-mat" placeholder="Contoh: 10 sak semen, 5 lonjor besi">
+        </div>
+        <div class="fg" id="fw-nil" style="display:none">
+          <label>Estimasi Nilai (Rp)</label>
+          <input type="number" id="f-nil" placeholder="Nilai perkiraan material">
+        </div>
+        <div class="fg fg-f">
+          <label>Catatan Tambahan</label>
+          <input type="text" id="f-cat" placeholder="Keterangan opsional">
+        </div>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-red" onclick="submitTrx()">💾 Simpan Transaksi</button>
+        <button class="btn btn-ghost" onclick="resetForm()">✕ Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABEL CASHFLOW -->
+<section style="background:var(--bg2);border-bottom:1px solid var(--bdr)">
+  <div class="si">
+    <div class="str"><div class="si-dot si-dot-gold"></div><div class="si-title">Riwayat Transaksi</div><div class="si-sub"><button class="btn btn-ghost" style="padding:4px 10px;font-size:9px" onclick="exportCSV()">⬇ Export CSV</button></div></div>
+    <div class="tw">
+      <div class="th">
+        <div class="th-t">Cashflow Lengkap</div>
+        <div class="ttabs">
+          <button class="ttab act" onclick="tab('semua',this)">Semua</button>
+          <button class="ttab" onclick="tab('masuk',this)">Uang</button>
+          <button class="ttab" onclick="tab('barang',this)">Material</button>
+          <button class="ttab" onclick="tab('keluar',this)">Keluar</button>
+        </div>
+      </div>
+      <div class="tov">
+        <table class="dt">
+          <thead><tr>
+            <th>#</th><th>Tanggal</th><th>Keterangan</th><th>Jenis</th>
+            <th class="tr">Masuk</th><th class="tr">Keluar</th><th class="tr">Saldo</th><th class="tc">Aksi</th>
+          </tr></thead>
+          <tbody id="cfBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-a">Kasir Panitia — Majelis Taklim Raudhotul Insan<br>WA: 083871666136 · Bank BJB · No. Rek: 0160405831100 · a.n Hudri</div>
+</footer>
+
+<!-- MODAL OK -->
+<div class="mo" id="mo-ok">
+  <div class="md">
+    <div class="md-body">
+      <span class="md-icon">✅</span>
+      <div class="md-t">Transaksi Tersimpan!</div>
+      <p class="md-s">Data berhasil dicatat. Jazakallahu Khairan.</p>
+      <div style="margin-top:18px"><button class="btn btn-red" style="width:100%" onclick="closeMo('ok')">OK ✓</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL HAPUS -->
+<div class="mo" id="mo-del">
+  <div class="md">
+    <div class="md-body">
+      <span class="md-icon">🗑️</span>
+      <div class="md-t">Hapus Transaksi?</div>
+      <p class="md-s">Tindakan ini tidak bisa dibatalkan.</p>
+      <div style="margin-top:18px;display:flex;gap:8px">
+        <button class="btn btn-ghost" style="flex:1" onclick="closeMo('del')">Batal</button>
+        <button class="btn btn-red" style="flex:1" onclick="confirmDel()">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SK='ri_transaksi_v1',TGT=162690000;
+const DA=[{id:'NOTA-001',tgl:'2026-05-03',ket:'Nota Penerimaan Material #001 — 15 item bahan bangunan',jenis:'masuk-barang',nominal:10380000,donatur:'— (belum diisi)',catatan:'Nota pertama penerimaan material pembangunan gedung'}];
+function ld(){try{var r=localStorage.getItem(SK);if(r)return JSON.parse(r);}catch(e){}localStorage.setItem(SK,JSON.stringify(DA));return DA;}
+function sd(d){localStorage.setItem(SK,JSON.stringify(d));}
+var data=ld(),flt='semua',delId=null;
+var fmt=function(n){return new Intl.NumberFormat('id-ID').format(Math.round(n||0));};
+var rp=function(n){return 'Rp '+fmt(n);};
+function htn(){
+  var u=0,b=0,k=0,cu=0,cb=0,ck=0;
+  data.forEach(function(t){
+    if(t.jenis==='masuk-uang'){u+=t.nominal;cu++;}
+    else if(t.jenis==='masuk-barang'){b+=t.nominal;cb++;}
+    else if(t.jenis==='keluar'){k+=t.nominal;ck++;}
+  });
+  return{u:u,b:b,k:k,s:u-k,cu:cu,cb:cb,ck:ck,p:Math.min(100,((u+b)/TGT)*100)};
+}
+function ui(){
+  var h=htn();
+  setTimeout(function(){document.getElementById('pBar').style.width=h.p.toFixed(1)+'%';},100);
+  document.getElementById('pPct').textContent=h.p.toFixed(1)+'%';
+  document.getElementById('sU').textContent=rp(h.u);document.getElementById('sCU').textContent=h.cu+' transaksi';
+  document.getElementById('sB').textContent=rp(h.b);document.getElementById('sCB').textContent=h.cb+' nota';
+  document.getElementById('sK').textContent=rp(h.k);document.getElementById('sCK').textContent=h.ck+' item';
+  document.getElementById('sS').textContent=rp(h.s);
+  rCF();
+}
+function rCF(){
+  var body=document.getElementById('cfBody');
+  var rows=data;
+  if(flt==='masuk')rows=data.filter(function(t){return t.jenis==='masuk-uang';});
+  else if(flt==='barang')rows=data.filter(function(t){return t.jenis==='masuk-barang';});
+  else if(flt==='keluar')rows=data.filter(function(t){return t.jenis==='keluar';});
+  var run=0,sm={};
+  data.slice().sort(function(a,b){return a.tgl.localeCompare(b.tgl);}).forEach(function(t){
+    if(t.jenis==='masuk-uang')run+=t.nominal;
+    else if(t.jenis==='keluar')run-=t.nominal;
+    sm[t.id]=run;
+  });
+  var sorted=rows.slice().sort(function(a,b){return a.tgl.localeCompare(b.tgl);});
+  var html='',no=1;
+  sorted.forEach(function(t){
+    var isU=t.jenis==='masuk-uang',isB=t.jenis==='masuk-barang',isK=t.jenis==='keluar';
+    var bdg=isU?'<span class="bdg bu">Uang</span>':isB?'<span class="bdg bb">Material</span>':'<span class="bdg bk">Keluar</span>';
+    var ml=isU||isB?fmt(t.nominal):'—',kl=isK?fmt(t.nominal):'—';
+    var sl=isB?'<span style="font-size:10px;color:var(--txt3)">non-kas</span>':(sm[t.id]!==undefined?fmt(sm[t.id]):'—');
+    html+='<tr>'
+      +'<td class="tc" style="font-size:10px;color:var(--txt3)">'+no+'</td>'
+      +'<td style="font-size:11px;white-space:nowrap;color:var(--txt2)">'+t.tgl+'</td>'
+      +'<td><div style="font-size:12px">'+t.ket+'</div>'+(t.donatur?'<div style="font-size:10px;color:var(--txt3)">'+t.donatur+'</div>':'')+'</td>'
+      +'<td>'+bdg+'</td>'
+      +'<td class="tr '+(isU?'cg':isB?'cgold':'')+'" style="font-size:12px;white-space:nowrap">'+ml+'</td>'
+      +'<td class="tr '+(isK?'cr':'')+'" style="font-size:12px;white-space:nowrap">'+kl+'</td>'
+      +'<td class="tr" style="font-size:12px;white-space:nowrap">'+sl+'</td>'
+      +'<td class="tc"><button class="del-btn" onclick="askDel(\''+t.id+'\')">Hapus</button></td>'
+      +'</tr>';
+    no++;
+  });
+  if(!sorted.length)html='<tr><td colspan="8" style="text-align:center;padding:22px;color:var(--txt3)">Belum ada data.</td></tr>';
+  if(flt==='semua'){
+    var h=htn();
+    html+='<tr class="tbl-foot"><td colspan="4" class="tc" style="color:var(--txt2)">TOTAL</td><td class="tr cg">'+fmt(h.u+h.b)+'</td><td class="tr cr">'+fmt(h.k)+'</td><td class="tr" style="color:var(--txt)">'+fmt(h.s)+'</td><td></td></tr>';
+  }
+  body.innerHTML=html;
+}
+function tab(f,el){flt=f;document.querySelectorAll('.ttab').forEach(function(b){b.classList.remove('act');});el.classList.add('act');rCF();}
+function tglFJ(){
+  var v=document.getElementById('f-jenis').value,b=v==='masuk-barang';
+  document.getElementById('fw-nom').style.display=b?'none':'block';
+  document.getElementById('fw-mat').style.display=b?'block':'none';
+  document.getElementById('fw-nil').style.display=b?'block':'none';
+}
+function submitTrx(){
+  var nm=document.getElementById('f-nama').value.trim()||'Hamba Allah';
+  var jn=document.getElementById('f-jenis').value;
+  var tgl=document.getElementById('f-tgl').value||new Date().toISOString().split('T')[0];
+  var cat=document.getElementById('f-cat').value;
+  var asal=document.getElementById('f-asal').value;
+  if(!jn){alert('Pilih jenis transaksi.');return;}
+  var entry={id:'TRX-'+Date.now(),tgl:tgl,jenis:jn,donatur:nm+(asal?' / '+asal:'')};
+  if(jn==='masuk-uang'){
+    var nom=parseFloat(document.getElementById('f-nom').value)||0;
+    if(nom<=0){alert('Masukkan nominal.');return;}
+    entry.ket='Donasi Uang'+(cat?' — '+cat:'');
+    entry.nominal=nom;
+  } else if(jn==='masuk-barang'){
+    var mat=document.getElementById('f-mat').value.trim();
+    if(!mat){alert('Deskripsikan material.');return;}
+    var nil=parseFloat(document.getElementById('f-nil').value)||0;
+    entry.ket='Donasi Material — '+mat;
+    entry.nominal=nil;
+  } else {
+    var nom2=parseFloat(document.getElementById('f-nom').value)||0;
+    if(nom2<=0){alert('Masukkan nominal pengeluaran.');return;}
+    entry.ket='Pengeluaran'+(cat?' — '+cat:'');
+    entry.nominal=nom2;
+  }
+  data.push(entry);
+  sd(data);
+  resetForm();
+  ui();
+  openMo('ok');
+}
+function resetForm(){
+  ['f-nama','f-asal','f-nom','f-mat','f-nil','f-cat'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('f-jenis').value='';
+  tglFJ();
+}
+function askDel(id){delId=id;openMo('del');}
+function confirmDel(){
+  if(delId){data=data.filter(function(t){return t.id!==delId;});sd(data);ui();}
+  delId=null;closeMo('del');
+}
+function exportCSV(){
+  var rows=[['ID','Tanggal','Keterangan','Donatur','Jenis','Nominal']];
+  data.forEach(function(t){rows.push([t.id,t.tgl,t.ket,t.donatur||'',t.jenis,t.nominal||0]);});
+  var csv=rows.map(function(r){return r.map(function(c){return'"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+  var a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download='cashflow-raudhotul-insan.csv';
+  a.click();
+}
+function openMo(id){document.getElementById('mo-'+id).classList.add('open');}
+function closeMo(id){document.getElementById('mo-'+id).classList.remove('open');}
+document.querySelectorAll('.mo').forEach(function(el){el.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+window.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('f-tgl').value=new Date().toISOString().split('T')[0];
+  document.getElementById('tgl-now').textContent=new Date().toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  ui();
+});
+window.addEventListener('storage',function(e){if(e.key===SK){data=ld();ui();}});
+</script>
+</body>
+</html>
