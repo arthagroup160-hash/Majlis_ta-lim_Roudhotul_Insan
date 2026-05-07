@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surat Undangan Donasi — MT Raudhotul Insan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#c0392b;--red2:#e74c3c;--blk:#1a1a1a;--gry:#555;--gry2:#888;
+  --gld:#7a5200;--bg:#f5f0e8;--paper:#ffffff;--accent:#fdf6e3;
+}
+body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--blk);min-height:100vh;padding:30px 16px}
+
+/* TOOLBAR CETAK */
+.toolbar{max-width:780px;margin:0 auto 16px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.tbtn{padding:8px 18px;font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  border-radius:3px;cursor:pointer;border:1px solid;font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;transition:.18s}
+.tbtn-red{background:var(--red);color:#fff;border-color:var(--red2)}.tbtn-red:hover{background:var(--red2)}
+.tbtn-out{background:#fff;color:var(--gry);border-color:#ccc}.tbtn-out:hover{border-color:var(--red);color:var(--red)}
+
+/* SURAT */
+.surat{max-width:780px;margin:0 auto;background:var(--paper);
+  box-shadow:0 4px 40px rgba(0,0,0,.12);padding:52px 60px}
+
+/* KOP */
+.kop{display:flex;align-items:flex-start;gap:20px;margin-bottom:0}
+.kop-logo{width:58px;height:58px;background:linear-gradient(135deg,var(--red),var(--red2));
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:-1px}
+.kop-info{flex:1}
+.kop-nama{font-size:18px;font-weight:800;color:var(--red);letter-spacing:.01em;margin-bottom:3px}
+.kop-alamat{font-size:11px;color:var(--gry);line-height:1.7}
+.kop-sk{font-size:10.5px;color:var(--gry2);margin-top:2px}
+.divider-red{height:3px;background:linear-gradient(90deg,var(--red),var(--red2),var(--red));margin:14px 0 18px}
+.divider-thin{height:1px;background:#e5e5e5;margin:18px 0}
+
+/* META SURAT */
+.meta-table{width:100%;border-collapse:collapse;margin-bottom:4px}
+.meta-table td{padding:3px 0;font-size:12px;vertical-align:top}
+.meta-lbl{width:180px;color:var(--gry)}
+.meta-sep{width:16px;color:var(--gry)}
+.meta-val{font-weight:600;color:var(--blk)}
+
+/* SALAM */
+.salam{text-align:center;font-size:14px;font-weight:700;font-style:italic;color:var(--red);
+  margin:20px 0 16px;letter-spacing:.01em}
+
+/* BODY TEXT */
+.body-text{font-size:13px;line-height:1.85;color:var(--blk);margin-bottom:13px;text-align:justify}
+.body-text.bold{font-weight:600}
+
+/* SECTION TITLE */
+.sec-title{font-size:13px;font-weight:700;color:var(--red);letter-spacing:.05em;
+  text-transform:uppercase;margin:20px 0 12px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:1px;background:#eee}
+
+/* INFO ROWS */
+.info-tbl{width:100%;border-collapse:collapse;margin-bottom:8px}
+.info-tbl td{padding:3.5px 0;font-size:12px;vertical-align:top}
+.info-lbl{width:180px;color:var(--gry2)}
+.info-sep{width:14px;color:var(--gry2)}
+.info-val{font-weight:600;color:var(--blk)}
+
+/* INFO 2 KOLOM */
+.info-2col{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+
+/* RAB TABLE */
+table.rab{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}
+table.rab thead tr{background:var(--red)}
+table.rab thead th{padding:9px 12px;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:#fff;text-align:left}
+table.rab thead th:last-child{text-align:right}
+table.rab tbody tr{border-bottom:1px solid #eee}
+table.rab tbody tr:nth-child(even){background:#faf8f4}
+table.rab tbody tr:hover{background:#fdf6e3}
+table.rab tbody td{padding:8px 12px;color:var(--blk);vertical-align:middle}
+table.rab tbody td:first-child{text-align:center;color:var(--gry2);font-size:11px}
+table.rab tbody td.desc{font-size:11px;color:var(--gry)}
+table.rab tbody td.amt{text-align:right;font-weight:600}
+.rab-sub td{background:#fdf6e3!important;border-top:2px solid #e5d5a0!important;font-weight:700;color:var(--gld)!important}
+.rab-ctg td{background:#faf8f4!important;color:var(--gry)!important}
+.rab-total td{background:var(--red)!important;color:#fff!important;font-weight:800;font-size:13px;border-top:none!important}
+.rab-terbilang{font-size:11px;color:var(--gry2);font-style:italic;text-align:center;margin-top:6px}
+
+/* PARTISIPASI LIST */
+.parti-list{display:flex;flex-direction:column;gap:8px;margin-bottom:4px}
+.parti-item{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;
+  background:#faf8f4;border:1px solid #eee;border-left:3px solid var(--red)}
+.parti-no{font-size:13px;font-weight:800;color:var(--red);flex-shrink:0;width:20px}
+.parti-txt{font-size:12.5px;color:var(--blk);line-height:1.5}
+
+/* TRANSPARANSI */
+.trans-list{display:flex;flex-direction:column;gap:6px;margin-bottom:4px}
+.trans-item{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--blk)}
+.trans-ico{color:var(--red);font-weight:800;flex-shrink:0}
+
+/* KONTAK BOX */
+.kontak-box{background:var(--accent);border:2px solid var(--red);padding:20px 24px;text-align:center;margin:16px 0}
+.kontak-box-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.kontak-box-sub{font-size:11.5px;color:var(--gry);margin-bottom:8px;font-style:italic}
+.kontak-box-no{font-size:22px;font-weight:800;color:var(--red);margin-bottom:4px}
+.kontak-box-hint{font-size:11px;color:var(--gry2)}
+.wa-btn{display:inline-flex;align-items:center;gap:6px;background:#25d366;color:#fff;
+  padding:9px 22px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  text-decoration:none;border-radius:3px;margin-top:10px;transition:.18s}
+.wa-btn:hover{background:#22bf5c}
+
+/* TTD */
+.ttd-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.ttd-box{text-align:center}
+.ttd-label{font-size:12px;color:var(--gry);margin-bottom:2px}
+.ttd-org{font-size:12px;font-weight:700;color:var(--red);margin-bottom:60px}
+.ttd-line{height:1px;background:#333;margin:0 20px 6px}
+.ttd-nama{font-size:12.5px;font-weight:700;color:var(--blk)}
+.ttd-pos{font-size:11px;color:var(--gry)}
+
+/* FOOTER SURAT */
+.surat-footer{margin-top:24px;padding-top:14px;border-top:2px solid var(--red);text-align:center}
+.sf-txt{font-size:10.5px;color:var(--gry2);font-style:italic;line-height:1.8}
+
+/* PRINT */
+@media print{
+  body{background:#fff;padding:0}
+  .toolbar{display:none!important}
+  .surat{box-shadow:none;padding:32px 40px;max-width:100%}
+  .parti-item:hover,.rab tbody tr:hover{background:inherit}
+}
+@media(max-width:600px){
+  .surat{padding:28px 20px}
+  .info-2col{grid-template-columns:1fr}
+  .ttd-wrap{grid-template-columns:1fr}
+  .kop-nama{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button class="tbtn tbtn-out" onclick="window.location.href='index.html'">← Portal Utama</button>
+  <button class="tbtn tbtn-out" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+  <a class="tbtn tbtn-red" href="https://wa.me/6283871666136?text=Assalamu'alaikum%2C%20saya%20telah%20membaca%20surat%20undangan%20donasi%20pembangunan%20MT%20Raudhotul%20Insan%20dan%20ingin%20berpartisipasi." target="_blank">📱 Konfirmasi via WA</a>
+</div>
+
+<div class="surat">
+
+  <!-- KOP -->
+  <div class="kop">
+    <div class="kop-logo">RI</div>
+    <div class="kop-info">
+      <div class="kop-nama">MAJELIS TAKLIM RAUDHOTUL INSAN</div>
+      <div class="kop-alamat">Kp. Pasir Ipis RT 39/08, Desa Gunungguruh, Kec. Gunungguruh, Kab. Sukabumi, Jawa Barat</div>
+      <div class="kop-sk">SK Kemenag No. 976 Tahun 2020 &nbsp;·&nbsp; No. Statistik: 431.2.32.02.10722 &nbsp;·&nbsp; Est. 19 Oktober 2015</div>
+    </div>
+  </div>
+  <div class="divider-red"></div>
+
+  <!-- META -->
+  <table class="meta-table">
+    <tr><td class="meta-lbl">Nomor Surat</td><td class="meta-sep">:</td><td class="meta-val">001/MT-RI/V/2026</td></tr>
+    <tr><td class="meta-lbl">Perihal</td><td class="meta-sep">:</td><td class="meta-val">Undangan Partisipasi — Pembangunan Gedung Majelis Taklim</td></tr>
+    <tr><td class="meta-lbl">Kepada Yth.</td><td class="meta-sep">:</td><td class="meta-val">Bapak / Ibu / Saudara/i yang Terhormat</td></tr>
+    <tr><td class="meta-lbl">Tanggal</td><td class="meta-sep">:</td><td class="meta-val">Mei 2026</td></tr>
+  </table>
+  <div class="divider-thin"></div>
+
+  <!-- SALAM -->
+  <div class="salam">Assalamu'alaikum Warahmatullahi Wabarakatuh</div>
+
+  <p class="body-text">Salam hormat kami sampaikan kepada Bapak/Ibu/Saudara/i. Semoga kita semua senantiasa berada dalam keadaan sehat, dilindungi, dan diberkahi dalam setiap langkah kehidupan.</p>
+
+  <p class="body-text">Tidak ada manusia yang tahu kapan waktunya tiba. Namun ada satu hal yang bisa kita siapkan mulai hari ini — sesuatu yang akan terus hidup, terus bermanfaat, dan terus mengalirkan kebaikan jauh setelah kita tiada.</p>
+
+  <p class="body-text bold">Hari ini, kami hadir membawa sebuah kesempatan. Bukan sekadar permohonan dana, melainkan sebuah undangan tulus untuk menjadi bagian dari warisan kebaikan yang abadi.</p>
+
+  <div class="divider-thin"></div>
+
+  <!-- I. TENTANG LEMBAGA -->
+  <div class="sec-title">I. &nbsp; Tentang Lembaga</div>
+  <div class="info-2col">
+    <table class="info-tbl">
+      <tr><td class="info-lbl">Nama Lembaga</td><td class="info-sep">:</td><td class="info-val">MT Raudhotul Insan</td></tr>
+      <tr><td class="info-lbl">Berdiri Sejak</td><td class="info-sep">:</td><td class="info-val">19 Oktober 2015</td></tr>
+      <tr><td class="info-lbl">SK Kemenag</td><td class="info-sep">:</td><td class="info-val">No. 976 Tahun 2020</td></tr>
+      <tr><td class="info-lbl">No. Statistik</td><td class="info-sep">:</td><td class="info-val">431.2.32.02.10722</td></tr>
+    </table>
+    <table class="info-tbl">
+      <tr><td class="info-lbl">Alamat</td><td class="info-sep">:</td><td class="info-val">Kp. Pasir Ipis RT 39/08</td></tr>
+      <tr><td class="info-lbl">Desa / Kecamatan</td><td class="info-sep">:</td><td class="info-val">Gunungguruh</td></tr>
+      <tr><td class="info-lbl">Kabupaten</td><td class="info-sep">:</td><td class="info-val">Sukabumi, Jawa Barat</td></tr>
+      <tr><td class="info-lbl">WhatsApp</td><td class="info-sep">:</td><td class="info-val">083871666136 (Moch Malvie Alkhudriyah)</td></tr>
+    </table>
+  </div>
+
+  <div class="divider-thin"></div>
+
+  <!-- II. LATAR BELAKANG -->
+  <div class="sec-title">II. &nbsp; Latar Belakang</div>
+  <p class="body-text">Majelis Taklim Raudhotul Insan telah berdiri dan melayani masyarakat Kampung Pasir Ipis selama lebih dari satu dekade. Ratusan anggota jamaah secara rutin mengikuti kegiatan pendidikan keagamaan Islam di lembaga ini — dari pengajian mingguan, pembelajaran Al-Qur'an, hingga pembinaan akhlak.</p>
+  <p class="body-text">Hingga saat ini, kegiatan tersebut berlangsung dengan fasilitas yang sangat terbatas dan belum memiliki gedung permanen yang layak. Padahal, lahan pembangunan berupa tanah wakaf telah tersedia dan bebas sengketa.</p>
+  <p class="body-text">Melalui surat ini, kami mengundang Bapak/Ibu/Saudara/i untuk mengambil bagian dalam pembangunan gedung permanen seluas 5 × 9 meter — sebuah ruang yang akan menjadi tempat ilmu diajarkan dan nilai-nilai luhur diwariskan untuk generasi mendatang.</p>
+
+  <div class="divider-thin"></div>
+
+  <!-- III. RAB -->
+  <div class="sec-title">III. &nbsp; Rencana Anggaran Biaya</div>
+  <p style="font-size:11.5px;color:var(--gry2);font-style:italic;margin-bottom:12px">Pembangunan Gedung 5 × 9 Meter · Konstruksi Permanen · Harga Material Kab. Sukabumi 2024</p>
+  <table class="rab">
+    <thead>
+      <tr>
+        <th style="width:40px;text-align:center">No</th>
+        <th style="width:28%">Uraian Pekerjaan</th>
+        <th>Keterangan</th>
+        <th style="width:130px;text-align:right">Jumlah (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>01</td><td><strong>Pekerjaan Persiapan</strong></td><td class="desc">Mobilisasi, pembersihan lahan</td><td class="amt">4.700.000</td></tr>
+      <tr><td>02</td><td><strong>Pondasi Batu Kali + Sloof</strong></td><td class="desc">Galian, batu kali, sloof beton</td><td class="amt">19.065.000</td></tr>
+      <tr><td>03</td><td><strong>Struktur Beton</strong></td><td class="desc">Kolom, Ring Balok, Lantai Rabat</td><td class="amt">24.660.000</td></tr>
+      <tr><td>04</td><td><strong>Dinding & Plesteran</strong></td><td class="desc">Bata ringan / hebel, acian</td><td class="amt">29.250.000</td></tr>
+      <tr><td>05</td><td><strong>Pekerjaan Atap</strong></td><td class="desc">Kuda-kuda + Genteng Keramik</td><td class="amt">22.100.000</td></tr>
+      <tr><td>06</td><td><strong>Lantai Keramik 40×40 cm</strong></td><td class="desc">Pemasangan keramik lantai</td><td class="amt">8.110.000</td></tr>
+      <tr><td>07</td><td><strong>Kusen, Pintu & Jendela</strong></td><td class="desc">Kayu/aluminium beserta kunci</td><td class="amt">13.160.000</td></tr>
+      <tr><td>08</td><td><strong>Plafon GRC / Gypsum</strong></td><td class="desc">Rangka + lembaran plafon</td><td class="amt">7.900.000</td></tr>
+      <tr><td>09</td><td><strong>Instalasi Listrik</strong></td><td class="desc">8 titik lampu + MCB</td><td class="amt">4.010.000</td></tr>
+      <tr><td>10</td><td><strong>Sanitasi & Drainase</strong></td><td class="desc">Saluran air, septik tank</td><td class="amt">4.950.000</td></tr>
+      <tr><td>11</td><td><strong>Finishing & Cat</strong></td><td class="desc">Pengecatan dalam & luar</td><td class="amt">9.995.000</td></tr>
+      <tr class="rab-sub"><td colspan="3"><strong>Subtotal Biaya Konstruksi</strong></td><td class="amt"><strong>147.900.000</strong></td></tr>
+      <tr class="rab-ctg"><td colspan="3">Biaya Tak Terduga / Contingency (10%)</td><td class="amt">14.790.000</td></tr>
+      <tr class="rab-total"><td colspan="3"><strong>TOTAL KEBUTUHAN DANA</strong></td><td class="amt"><strong>162.690.000</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="rab-terbilang">Terbilang: <em>Seratus Enam Puluh Dua Juta Enam Ratus Sembilan Puluh Ribu Rupiah</em></div>
+
+  <div class="divider-thin"></div>
+
+  <!-- IV. PARTISIPASI -->
+  <div class="sec-title">IV. &nbsp; Bentuk Partisipasi</div>
+  <p class="body-text">Kami membuka kesempatan partisipasi dalam berbagai bentuk, sesuai kemampuan dan kelapangan hati masing-masing:</p>
+  <div class="parti-list">
+    <div class="parti-item"><div class="parti-no">1</div><div class="parti-txt">Donasi uang tunai atau transfer ke rekening panitia</div></div>
+    <div class="parti-item"><div class="parti-no">2</div><div class="parti-txt">Donasi material bangunan (semen, besi, pasir, bata, dan lain-lain)</div></div>
+    <div class="parti-item"><div class="parti-no">3</div><div class="parti-txt">Menjadi sponsor untuk satu pos pekerjaan tertentu</div></div>
+    <div class="parti-item"><div class="parti-no">4</div><div class="parti-txt">Menyebarkan informasi pembangunan ini kepada keluarga dan rekan</div></div>
+  </div>
+
+  <div class="divider-thin"></div>
+
+  <!-- V. TRANSPARANSI -->
+  <div class="sec-title">V. &nbsp; Transparansi & Akuntabilitas</div>
+  <p class="body-text">Seluruh penerimaan donasi dicatat secara terbuka dan dapat diakses oleh siapapun. Setiap donasi uang maupun material akan diterbitkan nota penerimaan resmi sebagai bukti yang sah.</p>
+  <div class="trans-list">
+    <div class="trans-item"><span class="trans-ico">✓</span> Laporan keuangan real-time — terbuka untuk umum</div>
+    <div class="trans-item"><span class="trans-ico">✓</span> Setiap donasi diterbitkan nota penerimaan resmi</div>
+    <div class="trans-item"><span class="trans-ico">✓</span> Laporan penggunaan dana dilaporkan secara berkala</div>
+    <div class="trans-item"><span class="trans-ico">✓</span> Dana dikelola oleh panitia yang dapat dipertanggungjawabkan</div>
+  </div>
+
+  <div class="divider-thin"></div>
+
+  <!-- VI. KONTAK -->
+  <div class="sec-title">VI. &nbsp; Informasi & Konfirmasi Donasi</div>
+  <table class="info-tbl" style="margin-bottom:14px">
+    <tr><td class="info-lbl">Narahubung</td><td class="info-sep">:</td><td class="info-val">Moch Malvie Alkhudriyah (Sekretaris Panitia)</td></tr>
+    <tr><td class="info-lbl">WhatsApp</td><td class="info-sep">:</td><td class="info-val">083871666136</td></tr>
+    <tr><td class="info-lbl">Email</td><td class="info-sep">:</td><td class="info-val">malviejayagroup@gmail.com</td></tr>
+    <tr><td class="info-lbl">Alamat</td><td class="info-sep">:</td><td class="info-val">Kp. Pasir Ipis RT 39/08, Desa Gunungguruh, Kab. Sukabumi</td></tr>
+  </table>
+
+  <div class="kontak-box">
+    <div class="kontak-box-title">Konfirmasi Donasi</div>
+    <div class="kontak-box-sub">Setelah berdonasi, harap konfirmasi via WhatsApp ke nomor berikut:</div>
+    <div class="kontak-box-no">083871666136</div>
+    <div class="kontak-box-hint">Sertakan: Nama · Nominal · Tanggal Transfer</div>
+    <a class="wa-btn" href="https://wa.me/6283871666136?text=Assalamu'alaikum%2C%20saya%20ingin%20berpartisipasi%20dalam%20pembangunan%20Gedung%20MT%20Raudhotul%20Insan." target="_blank">
+      📱 Chat Panitia Sekarang
+    </a>
+  </div>
+
+  <div class="divider-thin"></div>
+
+  <!-- VII. PENUTUP -->
+  <div class="sec-title">VII. &nbsp; Penutup</div>
+  <p class="body-text">Kami menyadari bahwa setiap orang memiliki kemampuan dan kondisi yang berbeda. Kami tidak datang dengan tuntutan, melainkan dengan undangan tulus dari hati.</p>
+  <p class="body-text">Semua agama dan tradisi kebaikan di muka bumi mengajarkan satu kebenaran yang sama: bahwa apa yang kita berikan dengan tulus, tidak pernah benar-benar hilang. Ia akan terus hidup dalam bentuk manfaat yang dirasakan oleh orang banyak.</p>
+  <p class="body-text bold">Kami percaya, bagi mereka yang hatinya tergerak untuk ikut serta dalam pembangunan ini — ada balasan kebaikan yang jauh melampaui apa yang mereka berikan.</p>
+
+  <!-- TTD -->
+  <div class="ttd-wrap">
+    <div class="ttd-box">
+      <div class="ttd-label">Hormat kami,</div>
+      <div class="ttd-org">Panitia Pembangunan MT Raudhotul Insan</div>
+      <div class="ttd-line"></div>
+      <div class="ttd-nama">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</div>
+      <div class="ttd-pos">Ketua Panitia</div>
+    </div>
+    <div class="ttd-box">
+      <div class="ttd-label">Mengetahui,</div>
+      <div class="ttd-org">Sekretaris</div>
+      <div class="ttd-line"></div>
+      <div class="ttd-nama">( Moch Malvie Alkhudriyah )</div>
+      <div class="ttd-pos">Sekretaris Panitia Pembangunan</div>
+    </div>
+  </div>
+
+  <!-- FOOTER SURAT -->
+  <div class="surat-footer">
+    <div class="sf-txt">
+      Surat ini diterbitkan secara resmi oleh Panitia Pembangunan Gedung MT Raudhotul Insan &nbsp;·&nbsp; Sukabumi, Mei 2026<br>
+      SK Kemenag No. 976 Tahun 2020 &nbsp;·&nbsp; No. Statistik: 431.2.32.02.10722 &nbsp;·&nbsp; WA: 083871666136
+    </div>
+  </div>
+
+</div><!-- /surat -->
+
+</body>
+</html>
